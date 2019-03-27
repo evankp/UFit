@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, Slider, StyleSheet} from 'react-native'
+import * as baseStyles from '../base-styles'
 
 export default function CustomSlider({max, step, unit, onChange, value}) {
     return (
@@ -10,19 +11,26 @@ export default function CustomSlider({max, step, unit, onChange, value}) {
                 minimumValue={0}
                 value={value}
                 onValueChange={onChange}
+                style={{flex: 1}}
             />
 
-            <View>
-                <Text>{value}</Text>
-                <Text>{unit}</Text>
+            <View style={styles.metricCounter}>
+                <Text style={styles.metricValue}>{value}</Text>
+                <Text style={styles.metricUnit}>{unit}</Text>
             </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flexDirection: 'row'
-    }
+   container: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+
+    metricCounter: baseStyles.metricCounter().metricCounter,
+    metricValue: baseStyles.metricCounter().metricValue,
+    metricUnit: baseStyles.metricCounter().unit
 })

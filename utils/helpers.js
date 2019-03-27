@@ -1,16 +1,11 @@
 import React from 'react'
 
-''
 import {StyleSheet, View} from 'react-native'
 import {FontAwesome, MaterialIcons, MaterialCommunityIcons} from '@expo/vector-icons'
 import * as colors from './colors'
 
 export function isBetween(num, x, y) {
-    if (num >= x && num <= y) {
-        return true
-    }
-
-    return false
+    return num >= x && num <= y
 }
 
 export function calculateDirection(heading) {
@@ -47,6 +42,18 @@ export function timeToString(time = Date.now()) {
     return todayUTC.toISOString().split('T')[0]
 }
 
+const styles = StyleSheet.create({
+  iconContainer: {
+    padding: 5,
+    borderRadius: 8,
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 20
+  },
+})
+
 export function getMetricMetaInfo(metric) {
     const info = {
         walk: {
@@ -57,10 +64,10 @@ export function getMetricMetaInfo(metric) {
             type: 'steppers',
             getIcon() {
                 return (
-                    <View>
+                    <View style={[styles.iconContainer, {backgroundColor: colors.red}]}>
                         <MaterialIcons
                             name="directions-run"
-                            color={colors.black}
+                            color={colors.white}
                             size={35}/>
                     </View>
                 )
@@ -74,10 +81,12 @@ export function getMetricMetaInfo(metric) {
             type: 'steppers',
             getIcon() {
                 return (
-                    <MaterialCommunityIcons
+                    <View style={[styles.iconContainer, {backgroundColor: colors.green}]}>
+                        <MaterialCommunityIcons
                         name="bike"
-                        color={colors.black}
+                        color={colors.white}
                         size={35}/>
+                    </View>
                 )
             }
         },
@@ -90,10 +99,12 @@ export function getMetricMetaInfo(metric) {
             type: 'steppers',
             getIcon() {
                 return (
-                    <MaterialCommunityIcons
+                    <View style={[styles.iconContainer, {backgroundColor: colors.purple}]}>
+                        <MaterialCommunityIcons
                         name="swim"
-                        color={colors.black}
+                        color={colors.white}
                         size={35}/>
+                    </View>
                 )
             }
         },
@@ -106,10 +117,12 @@ export function getMetricMetaInfo(metric) {
             type: 'slider',
             getIcon() {
                 return (
-                    <FontAwesome
+                    <View style={[styles.iconContainer, {backgroundColor: colors.blue}]}>
+                        <FontAwesome
                         name="bed"
-                        color={colors.black}
+                        color={colors.white}
                         size={35}/>
+                    </View>
                 )
             }
         },
@@ -122,10 +135,12 @@ export function getMetricMetaInfo(metric) {
             type: 'slider',
             getIcon() {
                 return (
-                    <MaterialCommunityIcons
+                    <View style={[styles.iconContainer, {backgroundColor: colors.lightPurp}]}>
+                        <MaterialCommunityIcons
                         name="food"
-                        color={colors.black}
+                        color={colors.white}
                         size={35}/>
+                    </View>
                 )
             }
         }
