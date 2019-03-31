@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "UFit",
-    "slug": "UFit",
-    "privacy": "private",
+    "name": "EK UFit",
+    "slug": "ek-ufit",
+    "privacy": "unlisted",
     "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
@@ -10,9 +10,12 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "https://tylermcginnis.com/udacifitness-512.png",
+    "notification": {
+      "icon": "https://tylermcginnis.com/udacifitness-45.png"
+    },
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "https://tylermcginnis.com/udacifitness-512.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,6 +28,13 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": ""
+    "android": {
+      "package": "com.evankp.ufit",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "description": "Sample project for Mobile App"
   }
 }

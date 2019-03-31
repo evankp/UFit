@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 22852,
-  "expoServerNgrokUrl": "https://je-qz5.anonymous.ufit.exp.direct",
-  "packagerNgrokUrl": "https://packager.je-qz5.anonymous.ufit.exp.direct",
-  "ngrokPid": 17372,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }

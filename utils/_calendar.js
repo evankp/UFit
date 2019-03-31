@@ -8,7 +8,7 @@ function getRandomNumber (max) {
 }
 
 function setDummyData () {
-  const { run, bike, swim, sleep, eat } = getMetricMetaInfo()
+  const { walk, bike, swim, sleep, eat } = getMetricMetaInfo()
 
   let dummyData = {}
   const timestamp = Date.now()
@@ -18,7 +18,7 @@ function setDummyData () {
     const strTime = timeToString(time)
     dummyData[strTime] = getRandomNumber(3) % 2 === 0
       ? {
-          run: getRandomNumber(run.max),
+          walk: getRandomNumber(walk.max),
           bike: getRandomNumber(bike.max),
           swim: getRandomNumber(swim.max),
           sleep: getRandomNumber(sleep.max),
@@ -27,7 +27,7 @@ function setDummyData () {
       : null
   }
 
-  AsyncStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(dummyData))
+  AsyncStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(dummyData)).catch(err => console.log(err))
 
   return dummyData
 }

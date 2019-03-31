@@ -6,7 +6,7 @@ import {AppLoading} from 'expo'
 
 import {timeToString} from '../utils/helpers'
 import * as colors from '../utils/colors'
-import {getList, saveEntry} from '../utils/api'
+import {clearStorage, getList, saveEntry} from '../utils/api'
 import {getEntries} from '../actions'
 import DateHeader from './date'
 import MetricCard from './metric-card'
@@ -18,7 +18,6 @@ class History extends React.Component {
 
     componentDidMount() {
         const {dispatch} = this.props
-
         getList().then(entries => dispatch(getEntries(entries)))
             .then(({entries}) => {
                 if (!entries[timeToString()]) {

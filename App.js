@@ -2,7 +2,7 @@ import React from 'react'
 import {Text, View, StatusBar, StyleSheet, Platform} from 'react-native'
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
-import {createAppContainer, createMaterialTopTabNavigator, createStackNavigator} from 'react-navigation'
+import {createAppContainer, createMaterialTopTabNavigator, createBottomTabNavigator, createStackNavigator} from 'react-navigation'
 import {FontAwesome, Ionicons} from '@expo/vector-icons'
 import {Constants} from 'expo'
 
@@ -13,6 +13,8 @@ import EntryDetail from './components/entry-detail'
 import entries from './reducers'
 import logger from './middleware/logger'
 import * as colors from './utils/colors'
+import Live from './components/live'
+import {setLocalNotification} from './utils/helpers'
 
 const store = createStore(entries)
 
@@ -31,6 +33,14 @@ const Tabs = createMaterialTopTabNavigator({
         navigationOptions: {
             tabBarLabel: 'Add Entry',
             tabBarIcon: ({tintColor}) => <FontAwesome name='plus-square' size={30} color={tintColor}/>
+        }
+    },
+
+    live: {
+        screen: Live,
+        navigationOptions: {
+            tabBarLabel: 'Live',
+            tabBarIcon: ({tintColor}) => <FontAwesome name='dashboard' size={30} color={tintColor}/>
         }
     }
 }, {
@@ -72,6 +82,10 @@ const MainNavigtation = createStackNavigator({
 const AppContainer = createAppContainer(MainNavigtation)
 
 export default class App extends React.Component {
+    componentDidMount() {
+        setLocalNotification()
+    }
+
     render() {
         return (
             <Provider store={store}>

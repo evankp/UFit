@@ -2,8 +2,9 @@ import React from 'react'
 import {Text, View, Button, StyleSheet, Platform} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import {connect} from 'react-redux'
+import {NavigationActions} from 'react-navigation'
 
-import {getMetricMetaInfo, timeToString} from '../utils/helpers'
+import {clearLocalNotification, getMetricMetaInfo, setLocalNotification, timeToString} from '../utils/helpers'
 import * as colors from '../utils/colors'
 import {saveEntry, removeEntry} from '../utils/api'
 
@@ -67,6 +68,11 @@ class AddEntry extends React.Component {
             eat: 0
         })
 
+        this.toHome()
+
+        clearLocalNotification()
+            .then(setLocalNotification)
+
         saveEntry({key, entry})
             .catch(err => console.log(err))
         alert('submitted')
@@ -81,8 +87,17 @@ class AddEntry extends React.Component {
             }
         }))
 
+        this.toHome()
+
+        setLocalNotification()
         removeEntry(key)
         alert('Removed!')
+    }
+
+    toHome = () => {
+        this.props.navigation.dispatch(NavigationActions.back({
+            key: 'AddEntry'
+        }))
     }
 
     render() {

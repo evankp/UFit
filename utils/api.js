@@ -29,5 +29,5 @@ export function getItem(key) {
 
 export function getList() {
     return AsyncStorage.getItem(CALENDAR_STORAGE_KEY)
-        .then(formatCalendarResults)
+        .then(results => formatCalendarResults(results))
 }
